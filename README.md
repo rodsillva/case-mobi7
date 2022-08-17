@@ -17,7 +17,7 @@ Estes dados devem ser salvos em uma ou mais tabelas, a serem criadas pelo própr
 - [Power BI Desktop](https://powerbi.microsoft.com/pt-br/desktop/)
 
 # Como executar o projeto
-Pré-requisitos: Instalar o Docker Desktop, DBeaver e Power BI antes de executar os comandos abaixo
+Pré-requisitos: Instalar o Docker Desktop, DBeaver e Power BI antes de executar os comandos abaixo.
 
 ```bash
 # clonar o repositório
@@ -36,7 +36,7 @@ docker run --name mobi7_postgres_code_test -p 5432:5432 mobi7_postgres_code_test
 
 ![image](https://user-images.githubusercontent.com/62675395/185068746-a41fe990-af21-49e2-8102-15901597a769.png)
 
-## Credenciais para acesso do banco de dados através do DBeaver
+## Credenciais para acesso ao banco de dados através do DBeaver
 ```bash
 URL: jdbc:postgresql://localhost:5432/mobi7_code_interview
 User: postgres
@@ -91,7 +91,7 @@ Utilize o recurso **Export Data** do DBeaver para exportar os dados da tabela *r
 
 ![image](https://user-images.githubusercontent.com/62675395/185074139-559ab86d-555e-4dbb-8431-2b29548795df.png)
 
-## Acesso ao Dashboard no Power BI
+## Acessando o Dashboard no Power BI
 Ao abrir o Power BI Desktop, procure pelo arquivo **_dashboard_powerbi_case_mobi7.pbix_** na pasta onde os arquivos do projeto estão salvos.
 Para visualizar os dados de maneira correta, será preciso configurar a fonte de dados PostgreSQL, através do menu:
 
