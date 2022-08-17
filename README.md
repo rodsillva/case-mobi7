@@ -21,7 +21,7 @@ Pré-requisitos: Instalar o Docker Desktop, DBeaver e Power BI antes de executar
 
 ```bash
 # clonar o repositório
-git clone https://github.com/rodsillva/case-mobi7
+git clone https://github.com/rodsillva/case-mobi7.git
 
 # acessar a pasta do projeto
 abrir um terminal na pasta do projeto (no Windows pode ser o PowerShell)
