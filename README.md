@@ -42,51 +42,19 @@ URL: jdbc:postgresql://localhost:5432/mobi7_code_interview
 User: postgres
 Password: postgres
 ```
-### Criação da nova tabela e inserção dos dados consolidados
-```sql
-# Criar a tabela "resultado"
-CREATE TABLE public.resultado(
-	id SERIAL NOT NULL,
-	id_veiculo INT NULL,
-	total_viagens_realizadas INT NULL,
-	total_km_percorrido NUMERIC NULL,
-	total_tempo_movimento INT NULL,
-	total_tempo_parado INT NULL,
-	mes INT NULL,
-	ano INT NULL,
-	CONSTRAINT resultado_pk PRIMARY KEY (id)
-);
+## Criando uma nova tabela
+No DBeaver, execute a Query SQL contida no arquivo [query_create_table_resultado](https://github.com/rodsillva/case-mobi7/blob/main/query_create_table_resultado.sql)
 
-# Inserir os dados na tabela "resultado", extraídos da tabela "trip"
-INSERT INTO public.resultado(
-  id_veiculo, total_viagens_realizadas, 
-  total_km_percorrido, total_tempo_movimento, 
-  total_tempo_parado, mes, ano
-) 
-SELECT 
-	DISTINCT vehicle_id AS id_veiculo, 
-	SUM(journey_size) AS total_viagens_realizadas,  
-	SUM(total_distance) AS total_km_percorrido,		-- unidade de medida em quilometros
-	SUM(total_moving) AS total_tempo_movimento,		-- unidade de medida em segundos
-	SUM(total_idle) AS total_tempo_parado, 			   -- unidade de medida em segundos
-	07, 
-	EXTRACT(
-		YEAR 
-		FROM NOW()
-	)
-FROM 
-	trip
-GROUP BY 
-	id_veiculo 
-ORDER BY 
-	id_veiculo ASC;
+## Inserindo os dados extraídos da tabela "trip", na nova tabela
+No DBeaver, execute a Query SQL contida no arquivo [query_insert_into_table_resultado](https://github.com/rodsillva/case-mobi7/blob/main/query_insert_into_table_resultado.sql)
  
-# Exibir os dados da tabela "resultado"
+## Exibindo os dados da tabela "resultado"
+```sql
 SELECT * FROM resultado r;
 ```
 ![image](https://user-images.githubusercontent.com/62675395/185073624-164b6811-fec7-430a-97a5-b5ef7731c2c1.png)
 
-### Exportação dos dados para um arquivo CSV
+## Exportando os dados para um arquivo CSV
 Utilize o recurso **Export Data** do DBeaver para exportar os dados da tabela *resultado* para um arquivo CSV chamado **_resultados.csv_**.
 
 ![image](https://user-images.githubusercontent.com/62675395/185074139-559ab86d-555e-4dbb-8431-2b29548795df.png)
